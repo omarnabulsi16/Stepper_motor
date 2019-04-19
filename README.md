@@ -1,4 +1,4 @@
-Love Death + Robots
+# Love_Death-Robots
 
 This is a software that will use a Raspberry Pi to control a stepper motor to position an directional antenna at a specific 
 target to maximize signal strength.
