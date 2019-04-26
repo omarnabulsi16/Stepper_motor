@@ -32,3 +32,15 @@ def setDistance(source, destination):
               
         #conversion
         return d * 100000
+
+#target destination function
+def setTargetHeading(source, destination):
+        '''
+        Description:
+            Code adapted from https://gist.github.com/jeromer
+            Calculates and sets self.__targetHeading given self.__gps and self.__nextWaypoint
+        Args:
+            None
+        Returns:
+            Nothing
+        '''
