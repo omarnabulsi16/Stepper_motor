@@ -44,3 +44,12 @@ def setTargetHeading(source, destination):
         Returns:
             Nothing
         '''
+        
+        #sequencing objects
+        if (type(source) != tuple) or (type(destination) != tuple) :
+                #raise TypeError
+                print("Only tuples allowed")
+        
+        #setting latitude variables
+        lat1 = math.radians(source[0])
+        lat2 = math.radians(destination[0])
