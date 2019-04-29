@@ -53,3 +53,9 @@ def setTargetHeading(source, destination):
         #setting latitude variables
         lat1 = math.radians(source[0])
         lat2 = math.radians(destination[0])
+        
+        #setting the longitude as x and y variables
+        diffLong = math.radians(destination[1] - source[1])
+        x = math.sin(diffLong) * math.cos(lat2)
+        y = math.cos(lat1) * math.sin(lat2) - (math.sin(lat1)
+                * math.cos(lat2) * math.cos(diffLong))
