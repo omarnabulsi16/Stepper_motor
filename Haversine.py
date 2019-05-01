@@ -59,3 +59,11 @@ def setTargetHeading(source, destination):
         x = math.sin(diffLong) * math.cos(lat2)
         y = math.cos(lat1) * math.sin(lat2) - (math.sin(lat1)
                 * math.cos(lat2) * math.cos(diffLong))
+        
+        #more calculations to convert the GPS coorinates to directional headings
+        initial_heading = math.atan2(x, y)
+        initial_heading = math.degrees(initial_heading)
+        compass_heading = (initial_heading + 360) % 360
+        
+        #returns compass heading directional angle
+        return compass_heading
