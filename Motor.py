@@ -3,10 +3,11 @@
 #######################################################
 import RPi.GPIO as GPIO
 import time
+import threading
 import roslibpy
 # Haversine gives the GPS coords of the base station
 from Haversine import setTargetHeading as Haversine
-client = roslibpy.Ros(host='192.168.1.2', port=9090)\
+client = roslibpy.Ros(host='192.168.1.2', port=9090)
 #tells the program what ROS topic it should be listening to
 listener = roslibpy.Topic(client, '/gnss','fake_sensor_test/gps')
 #sets IP address and port number used
@@ -14,7 +15,9 @@ listener2 = roslibpy.Topic(client, '/baseIMU','std_msgs/String')
 # a function to begin listening and subscribe to the topic listed above
 def start_listening():
     listener.subscribe(receive_message)
-#prints out the message
+def start_listening2():
+    listener2.subscribe(receive_message)
+#prints out the message and sets variables (both recieve_message functions)
 def receive_message(message):
     print("start receive message")
     global roverLat, roverLon, baseLon, baseLat
@@ -24,13 +27,15 @@ def receive_message(message):
     baseLon = message['baseLon']
     baseLat = message['baseLat']
     print ("end receive message")
-
+def receive_message2(message):
+    global data
+    data = message['data']
+#runs the motor
 def main():
     GPIO.setmode(GPIO.BCM)
     # these are the pins in use and MUST BE USED to control the motor on the base station
     control_pins = [4,17,11]
-
-    # sets up the pins for the raspberry pi
+        # sets up the pins for the raspberry pi
     for pin in control_pins:
         GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, 0)
@@ -67,4 +72,6 @@ client.run()
 client.on_ready(start_listening())
 #sets IP address and port number used
 client.on_ready(start_listening2())
+#thread to run main while rosbridge collect data
+threading.Thread(target=main).start()
 GPIO.cleanup()
