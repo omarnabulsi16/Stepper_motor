@@ -24,15 +24,8 @@ def receive_message(message):
     baseLon = message['baseLon']
     baseLat = message['baseLat']
     print ("end receive message")
-# Initialize variables
-data = baseLat = roverLat = baseLon = roverLon = 0
-# converts the Haversine((lat1, lon1), (lat2, lon2)) function to be called by "Have" instead of the entire function
-Have = Haversine((baseLat,baseLon), (roverLat,roverLon))
-# starts listening and returning values
-client.on_ready(start_listening)
-#sets IP address and port number used
-client.on_ready(start_listening2)
-while (True):
+
+def main()
     GPIO.setmode(GPIO.BCM)
     # these are the pins in use and MUST BE USED to control the motor on the base station
     control_pins = [4,17,11]
@@ -65,6 +58,13 @@ while (True):
                 time.sleep(.00005)
                 GPIO.output(11,0)
                 time.sleep(.00005)
-    client.run_forever()
-
+# Initialize variables
+data = baseLat = roverLat = baseLon = roverLon = 0
+# converts the Haversine((lat1, lon1), (lat2, lon2)) function to be called by "Have" instead of the entire function
+Have = Haversine((baseLat,baseLon), (roverLat,roverLon))
+client.run()
+# starts listening and returning values
+client.on_ready(start_listening())
+#sets IP address and port number used
+client.on_ready(start_listening2())
 GPIO.cleanup()
