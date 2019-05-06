@@ -23,8 +23,8 @@ def setDistance(source, destination):
         #math formulas to calculate the distance between 2 coordinates
         da = math.radians(a2-a1)
         db = math.radians(b2-b1)
-        a = math.sin(da/2) * math.sin(da/2) + math.cos(math.radians(a1)) \ 
-                * math.cos(math.radians(a2)) * math.sin(db/2) * math.sin(db/2)
+        a = math.sin(da/2) * math.sin(da/2) + math.cos(math.radians(a1)) \
+        * math.cos(math.radians(a2)) * math.sin(db/2) * math.sin(db/2)
         
         #calculate the radius and distance traveled
         c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
