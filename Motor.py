@@ -25,7 +25,7 @@ def receive_message(message):
     baseLat = message['baseLat']
     print ("end receive message")
 
-def main()
+def main():
     GPIO.setmode(GPIO.BCM)
     # these are the pins in use and MUST BE USED to control the motor on the base station
     control_pins = [4,17,11]
