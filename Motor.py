@@ -16,7 +16,7 @@ listener2 = roslibpy.Topic(client, '/baseIMU','std_msgs/String')
 def start_listening():
     listener.subscribe(receive_message)
 def start_listening2():
-    listener2.subscribe(receive_message)
+    listener2.subscribe(receive_message2)
 #prints out the message and sets variables (both recieve_message functions)
 def receive_message(message):
     print("start receive message")
