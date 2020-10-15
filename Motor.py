@@ -27,7 +27,7 @@ def receive_message(message):
     baseLon = message['baseLon']
     baseLat = message['baseLat']
     print ("end receive message")
-def receive_message2(message):
+def receive_message2(message): 
     global data
     data = message['data']
 #runs the motor
